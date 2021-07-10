@@ -6,7 +6,7 @@ var ordercontroller = require("./ordercontroler");
 module.exports = function(app)
 {
     //mapping code for different HTTP Requests
-    app.route("/")
+    app.route("/getflowers")
         .get(flowercontroller.filesend)
         
     app.route("/flowers/insert")

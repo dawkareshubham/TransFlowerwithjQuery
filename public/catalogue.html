@@ -125,10 +125,10 @@
     <div class="topnav">
 
       <div class="search-container">
-        <form action="/action_page.php">
-          <input type="text" placeholder="Search.." name="search">
-          <button type="submit" ><i class="fa fa-search"></i></button>
-        </form>
+        
+          <input type="text" id="Searchflower" placeholder="Search.." >
+          <button  onclick="searchbyName()" ><i class="fa fa-search"></i></button>
+          
       </div>
     </div>
   </center>
@@ -138,11 +138,34 @@
   </div>
   <script>
     var dataUrl = 'http://localhost:9000/flowers';
-    function getFlower() {
+
+    function searchbyName()
+    {
+      
 
       $.ajax(
         {
           url: dataUrl,
+          type: 'Get',
+          success: function (data) {
+
+            readOneData(data);
+          },
+          error: function (err) {
+            console.log("error");
+          }
+        }
+      )
+  
+    }
+
+
+
+    function getFlower() {
+
+      $.ajax(
+        {
+          url: dataUrl ,
           type: 'Get',
           success: function (data) {
 
@@ -155,6 +178,33 @@
       )
     }
 
+    function readOneData(data){
+      let flowerName=$('#Searchflower').val();
+      //let flowerName= document.getElementById('searchName').value;
+      console.log(flowerName);
+      var html2=[];
+      html2.push("<div class='container'><center> <table class='table' border='2px solid #555'><th>Flowername</th><th>Discription</th><th>price</th><th>quantity</th><th>image</th>")
+      var div = document.getElementById("mydiv");
+      for (i = 0; i < data.length; i++) {
+        
+        if(flowerName == data[i].flowername)
+        {
+          console.log(data[i].flowername);
+        html2.push('<tr height="14px"><td>' + data[i].flowername + '</td><td>' + data[i].description + '</td>' +
+          '<td>' + data[i].unitprice + '</td><td>' + data[i].quantity + '</td><td><img src="' + data[i].image + '" alt="flower image" height="90px"; style="border: #e68e1b;"></td></tr>');
+          break;
+        }
+      }
+      html2.push('</table></center>');
+
+
+      div.innerHTML = html2.join(" ");
+
+
+    }
+
+
+
     function readAlldata(data) {
       console.log(data);
       var html = [];
@@ -162,7 +212,7 @@
       // html.push('<table><th>Flowername</th><th>Description</th><th>price</th><th>quantity</th>');
       var div = document.getElementById("mydiv");
       for (i = 0; i < data.length; i++) {
-        html.push('<tr height="14px"><td>' + data[i].flowername + '</td><td>' + data[i].discription + '</td>' +
+        html.push('<tr height="14px"><td>' + data[i].flowername + '</td><td>' + data[i].description + '</td>' +
           '<td>' + data[i].unitprice + '</td><td>' + data[i].quantity + '</td><td><img src="' + data[i].image + '" alt="flower image" height="90px"; style="border: #e68e1b;"></td></tr>');
 
       }
@@ -172,6 +222,7 @@
       div.innerHTML = html.join(" ");
 
     }
+
 
 
   </script>

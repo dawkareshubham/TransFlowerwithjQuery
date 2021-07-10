@@ -3,7 +3,7 @@ var FlowerObj = require('./dal');
 
 exports.filesend = function(req, res){
     
-    res.sendFile('index.html');
+    res.sendFile(__dirname+'/public/catalogue.html');
 }
 
 exports.getAll = function (req, res) {
