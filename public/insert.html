@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insert</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <form id="insertForm" method="POST"  >
+
+        <label for="fid">ID</label>
+        <input type="text" id="fid" name="fid">
+
+        <label for="name">Flower name</label>
+        <input type="text" id="name" name="flowname">
+        
+        <label for="discription">discription</label>
+        <input type="text" name="disc" id="discription">
+        <br>
+        <label for="price">unit price</label>
+        <input type="number" id = "price" name="price">
+
+        <label for="quantity">Quantity</label>
+        <input type="number" id="quantity" name="quantity">
+        <br>
+        <label for="image">image url</label>
+        <input type="text" id="image" name="image">
+    </form>
+    <button onclick="addflower()">Submit</button>
+    <script>
+         
+        dataUrl = "http://localhost:9000/flowers/insert"
+        
+        function addflower(){
+           
+            let flowername = $('#name').val();
+            let discription = $('#discription').val();
+            let quantity = $('#quantity').val();
+            let unitprice = $('#price').val();
+            let image = $('#image').val();
+
+            let flower = {
+                id:$('#fid').val(),
+                 flowername : $('#name').val(),
+                 discription : $('#discription').val(),
+                 quantity : $('#quantity').val(),
+                 unitprice : $('#price').val(),
+                 image : $('#image').val()
+            }
+            console.log(flower);
+
+            $.post(dataUrl, flower, ()=>{
+                alert("data inserted")
+            })
+          
+        }
+
+        
+         
+   
+        </script>
+</body>
+</html>

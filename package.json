@@ -1,0 +1,15 @@
+{
+  "name": "taskapp",
+  "version": "1.0.0",
+  "description": "Task app with database connectivity",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Roshan Patil",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mysql": "^2.18.1"
+  }
+}
