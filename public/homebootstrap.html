@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Home</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 450px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      background-color: rgba(161, 80, 177, 0.5);
+      height: 100%;
+    }
+    
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+      position: relative;
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;} 
+    }
+
+    .fa {
+  padding: 5px;
+  font-size: 30px;
+  width: 50px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+}
+
+.fa:hover {
+    opacity: 0.7;
+}
+
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+
+.fa-instagram {
+  background: #881261;
+  color: white;
+}
+
+.fa-whatsapp {
+  background: #128839;
+  color: white;
+}
+
+ body {
+ /* background-image: url("./images/497913.jpg");
+ background-color: #cccccc; */
+
+ background-image: url("./images/backg.jpg"),linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5));
+} 
+
+
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#"><img src="./images/logo1.jpg" alt="logo" width="100" height="40"></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Products</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span>Sign up </a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+  
+<div class="container-fluid text-center">    
+  <div class="row content">
+    <div class="col-sm-2 sidenav">
+      <p ><a href="#" style="color: azure;">Blog</a></p>
+      <p><a href="#" style="color: azure;">Careers</a></p>
+      <p><a href="#" style="color: azure;">Feedback</a></p>
+    </div>
+    <div class="col-sm-8 text-left"> 
+      <h1 style="color: #e23434; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;"><i>Welcome  to Transflower</i></h1>
+      <p style="color: rgb(123, 255, 0); font-size: larger;"><b>  We have been serving our valuable customers since 2012. We have best grown fresh flowers to please your Loved Ones. Grab the best florist in your Town and Spread Happiness.</b></p>
+      <hr>
+    </div>
+    <div class="col-sm-2 sidenav">
+      <div class="well">
+        <p id="image"><img src="./images/Aster.jpg" height="90px" alt=""></p>
+      </div>
+      <div class="well">
+        <p>ADS</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer >
+  <div class="container-fluid text-center"><p>Our Presence: &emsp; Pune &emsp; Kolhapur &emsp; Satara &emsp; Beed</p></div>
+  <div class="container-fluid text-center">
+    <p ><a href="#" class="fa fa-facebook"></a>
+      <a href="#" class="fa fa-twitter"></a>
+      <a href="#" class="fa fa-instagram"></a>
+      <a href="#" class="fa fa-whatsapp"></a></p>
+  </div>
+</footer>
+
+<script>
+  var dataUrl = 'http://localhost:9000/flowers'
+  $.ajax(
+    {
+      url:dataUrl,
+      type:'GET',
+      success:function(data){
+        getImage(data);
+
+      },
+      error:function(err){
+        console.log(err);
+      }
+    }
+  )
+
+  function getImage(data){
+
+    var par = document.getElementById('image')
+  }
+
+ 
+
+</script>
+
+</body>
+</html>

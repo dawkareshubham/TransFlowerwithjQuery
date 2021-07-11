@@ -11,7 +11,7 @@ var FlowerObj = function(flower)
 {
     this.id=flower.id;  //attribute
     this.flowername=flower.flowername;
-    this.discription=flower.discription;
+    this.description=flower.description;
     this.unitprice=flower.unitprice;
     this.quantity=flower.quantity;
     this.image=flower.image;
@@ -97,6 +97,40 @@ FlowerObj.delOneData= function(flowerId,result)
     });
 };
 
+FlowerObj.delFlower=function(flowerName,result)
+{
+    console.log("From DAL:"+flowerName);
+    sql.query("delete from flowers where flowername= ? ",[flowerName],function(err,res)
+    {
+        if(err) 
+        {
+            console.log("error:",err);
+            result(null,err);
+        }
+        else
+        {
+            result(null,res);
+        }
+    });
+
+}
+
+//Update my Name:
+FlowerObj.updateOneFlower= function(new_flower, result)
+{
+    sql.query("update flowers set ? where flowername= ? ", [new_flower, new_flower.flowername],function(err,res)
+    {
+        if(err)
+        {
+            console.log("error:",err)
+            result(null,err);
+        } 
+        else
+        {
+            result(null,res);
+        }
+    });
+};
 
 FlowerObj.updateOneData= function(new_flower,flowerId, result)
 {

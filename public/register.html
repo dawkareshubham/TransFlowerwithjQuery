@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transflower.com</title>
+</head>
+<body>
+    <center><img src="./images/logo.jpg" alt="flower image" width=1200 height=250></center>
+    <marquee behavior="scroll" >Welcome to Transflower !</marquee>
+    <hr size="3" color="dark">
+    <a href="home.html">Home</a> |
+    <a href="aboutus.html">About Us</a> |
+    <a href="careers.html">Career</a> |
+    <a href="login.html">Login</a> |
+    <hr size="3" color="dark">
+    <h2 align="center"><font size=6>Sign up yourself with us</font></h2>
+    <p align="center"><font size=4><marquee width=100% behaviour="scroll">Hurry up and Grab 10% off !</marquee></font></p>
+    <center>
+    <form action="/api/customers" >
+        <table>
+            <tr>
+                <td><font size=4 ><label>ID *</label></font></td>
+                <td><input type="number" name="id" placeholder="ID" required></td>
+            </tr>
+            <tr>
+                <td><font size=4 ><label>First Name *</label></font></td>
+                <td><input type="text" name="name" placeholder="First Name" required></td>
+            </tr>
+            <tr>
+                <td><font size=4><label>Last Name</label></font></td>
+                <td><input type="text" name="Lastname" placeholder="Last Name" required ></td>
+            </tr>
+            <tr>
+                <td><font size=4><label> Email *</label></font></td>
+                <td><input type="email" name="email" placeholder="Email ID" required></td>
+            </tr>
+            <tr>
+                <td><font size=4><label>Contact Number *</label></font></td>
+                <td><input type="text" name="phone" placeholder="Number" required></td>
+            </tr>
+            <tr>
+                <td><font size=4></font><label>Username *</label></font></td>
+                <td><input type="text" placeholder="Username" minlength="8" required></td>
+            </tr>
+            <tr>
+                <td><font size=4></font><label >Password *</label></font></td>
+                <td><input id="p1" type="password" placeholder="password" minlength="8" required></td>
+            </tr>
+            <tr>
+                <td><font size=4></font><label >Confirm Password *</label></font></td>
+                <td><input id="p2" type="password" placeholder="password" minlength="8" required></td>
+            </tr>
+            <tr>
+                <td>
+                <button onclick="passValidate()" style="background-color: indianred; font-size: large;">Validate Password</button>
+                </td>
+            </tr>
+        </table>
+        <button type="submit" onclick="javascript:alert('Registered Succesfully !')" style="background-color: indianred; font-size: large;">SUBMIT</button>
+    </form>
+    </center>
+    <hr size="10" color="dark">
+    <script>
+        function passValidate()
+        {
+            let p1= document.getElementById("p1").value;
+            let p2= document.getElementById("p2").value;
+            if(p1 != p2)
+            {
+                alert('Password not Same')
+            }
+        }
+
+    </script>
+</body>
+</html>

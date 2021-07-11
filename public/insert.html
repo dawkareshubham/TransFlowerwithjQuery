@@ -1,34 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Insert</title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insert</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
+    <center>
+        <img src="./images/logo.jpg" alt="flower image" width=1200 height=250>
+    </center>
+        <marquee behavior="scroll">Welcome to Transflower !</marquee>
+    <hr size="3" color="dark">
+        <a href="home">Home</a> |
+        <a href="aboutus">About Us</a> |
+        <a href="contact">Contact Us</a> |
+        <a href="careers">Career</a> |
+        <a href="register">Sign Up</a> |
+    <hr size="3" color="dark">
+<center>
+    <h1>Admin Page</h1>
+    <h4>Add Flowers to Inventory !</h4>
+    
     <form id="insertForm" method="POST"  >
-
-        <label for="fid">ID</label>
-        <input type="text" id="fid" name="fid">
-
-        <label for="name">Flower name</label>
-        <input type="text" id="name" name="flowname">
-        
-        <label for="discription">discription</label>
-        <input type="text" name="disc" id="discription">
-        <br>
-        <label for="price">unit price</label>
-        <input type="number" id = "price" name="price">
-
-        <label for="quantity">Quantity</label>
-        <input type="number" id="quantity" name="quantity">
-        <br>
-        <label for="image">image url</label>
-        <input type="text" id="image" name="image">
+        <table>
+            <tr>
+                <td><label for="fid">ID</label></td>
+                <td><input type="text" id="fid" name="fid"></td>
+            </tr>
+            <tr>
+                <td><label for="name">Flower name</label></td>
+                <td><input type="text" id="name" name="flowname"></td>
+            </tr>
+            <tr>
+                <td><label for="discription">Description</label></td>
+                <td><input type="text" name="disc" id="discription"></td>
+            </tr>
+            <tr>
+                <td><label for="price">Unit price</label></td>
+                <td><input type="number" id = "price" name="price"></td>
+            </tr>
+            <tr>
+                <td><label for="quantity">Quantity</label></td>
+                <td><input type="number" id="quantity" name="quantity"></td>
+            </tr>
+            <tr>
+                <td><label for="image">Image url</label></td>
+                <td><input type="text" id="image" name="image"></td>
+            </tr>
+    </table>
     </form>
     <button onclick="addflower()">Submit</button>
+
+    <hr/>
+    <h4>Update Flower in Inventory !</h4>
+    <form id="updateForm" method="POST"  >
+        <table>
+            <tr>
+                <td><label for="fid">ID</label></td>
+                <td><input type="text" id="delfid" name="fid"></td>
+            </tr>
+            <tr>
+                <td><label for="name">Flower name</label></td>
+                <td><input type="text" id="delname" name="flowname"></td>
+            </tr>
+            <tr>
+                <td><label for="discription">Description</label></td>
+                <td><input type="text" name="disc" id="deldiscription"></td>
+            </tr>
+            <tr>
+                <td><label for="price">Unit price</label></td>
+                <td><input type="number" id = "delprice" name="price"></td>
+            </tr>
+            <tr>
+                <td><label for="quantity">Quantity</label></td>
+                <td><input type="number" id="delquantity" name="quantity"></td>
+            </tr>
+            <tr>
+                <td><label for="image">Image url</label></td>
+                <td><input type="text" id="delimage" name="image"></td>
+            </tr>
+    </table>
+    </form>
+    <button onclick="updateflower()">Submit</button>
+
+    <hr/>
+    <h4>Remove Flower from Inventory !</h4>
+    <form >
+        <table>
+            <tr>
+                <td><label for="name">Name</label></td>
+                <td><input type="text" id="delName" name="delName"></td>
+            </tr>
+    </table>
+    </form>
+    <button onclick="delflower()">Submit</button>
+
     <script>
          
         dataUrl = "http://localhost:9000/flowers/insert"
@@ -36,7 +105,7 @@
         function addflower(){
            
             let flowername = $('#name').val();
-            let discription = $('#discription').val();
+            let description = $('#discription').val();
             let quantity = $('#quantity').val();
             let unitprice = $('#price').val();
             let image = $('#image').val();
@@ -44,7 +113,7 @@
             let flower = {
                 id:$('#fid').val(),
                  flowername : $('#name').val(),
-                 discription : $('#discription').val(),
+                 description : $('#discription').val(),
                  quantity : $('#quantity').val(),
                  unitprice : $('#price').val(),
                  image : $('#image').val()
@@ -57,8 +126,49 @@
           
         }
 
+        var delUrl = 'http://localhost:9000/flowers/delete';
+        function delflower()
+        {
+            let flowerName = $('#delName').val();
+            // console.log(flowerName);
+            
+            let data={
+                'Name':flowerName
+            }
+
+            $.post(delUrl,data,()=>{
+                console.log(data);
+            })
+
+
+        }
         
-         
+        var upUrl = 'http://localhost:9000/flowers/update';
+         function updateflower()
+         {
+            
+
+
+            let flowername = $('#delname').val();
+            let description = $('#deldiscription').val();
+            let quantity = $('#delquantity').val();
+            let unitprice = $('#delprice').val();
+            let image = $('#delimage').val();
+
+            let flower = {
+                id:$('#delfid').val(),
+                 flowername : $('#delname').val(),
+                 description : $('#deldiscription').val(),
+                 quantity : $('#delquantity').val(),
+                 unitprice : $('#delprice').val(),
+                 image : $('#delimage').val()
+            }
+            console.log(flower);
+
+            $.post(upUrl, flower, ()=>{
+                alert("data Updated")
+            })
+         }
    
         </script>
 </body>
