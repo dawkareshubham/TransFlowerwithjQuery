@@ -11,7 +11,7 @@ var FlowerObj = function(flower)
 {
     this.id=flower.id;  //attribute
     this.flowername=flower.flowername;
-    this.discription=flower.discription;
+    this.description=flower.description;
     this.unitprice=flower.unitprice;
     this.quantity=flower.quantity;
     this.image=flower.image;

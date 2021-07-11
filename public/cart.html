@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Transflower.com</title>
+</head>
+<body>
+<center>
+    <img src="./images/logo.jpg" alt="flower image" width=1200 height=250>
+</center>
+    <marquee behavior="scroll">Welcome to Transflower !</marquee>
+<hr size="3" color="dark">
+<a href="home.html">Home</a> |
+<a href="aboutus.html">About Us</a> |
+<a href="contact.html">Contact Us</a> |
+<a href="careers.html">Career</a> |
+<a href="register.html">Sign Up</a> |
+<hr size="3" color="dark">
+<center>
+<h1>CART</h1>
+<h4>Create your Order !</h4>
+<div style="float: left; margin: 30px;">
+<form action="addFlower()">
+    <table >
+        <tr>
+            <td>
+                <label><b>Flower name :</b></label>
+            </td>
+            
+            <td>
+                <select id="flowname">
+                    <option >Rose</option>
+                    <option >Lily</option>
+                    <option >Gerbera</option>
+                    <option >Lotus</option>
+                    <option >Jasmine</option>
+                    <option >Orchid</option>
+                    <option >Tulip</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label ><b>Quantity :</b></label>
+            </td>
+            <td>
+                <input type="number" name="qaunt" id="quant">
+            </td>
+        </tr>
+    <tr>
+        <td></td>
+        <td>
+            <button onclick="addFlower()" type="button" >Add New Flower</button>
+        </td>
+    </tr>
+    </table>
+</form>
+</div>
+    <table id="flowerlist" border="hr" style="width: 50%; ">
+        <th>Flower Name</th>  
+        <th>Price</th>  
+        <th>Quantity</th>
+        <th>Total Price</th>
+        <th>Action</th>
+    </table>
+    <button onclick="billing() "><b>Calculate</b></button>
+    <h2 id="totalAmount"></h2>
+    <button type="submit" ><a href="./payment">Proceed to Payment</a></button>
+    </center>
+    <script src="./scripts/order.js" >
+    </script>
+</body >
+</html >

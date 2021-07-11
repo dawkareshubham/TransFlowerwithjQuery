@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transflower.com</title>
+</head>
+<body>
+    <center><img src="./images/logo.jpg" alt="flower image" width=1200 height=250></center>
+    <marquee behavior="scroll" >Welcome to Transflower !</marquee>
+    <hr size="3" color="dark">
+    <a href="home.html">Home</a> |
+    <a href="contact.html">Contact Us</a> |
+    <a href="aboutus.html">About Us</a> |
+    <a href="login.html">Login</a> |
+    <a href="register.html">Sign Up</a> |
+    <hr size="3" color="dark">
+    <h2 align="center"><font size=6></font></h2>
+    <h2 align="center"><font size=6>Start your career with us !</font></h2>
+    <center>
+        <form action="/api/candidate" method="POST">
+            <table>
+                <tr>
+                    <td><font size=4 ><label>First Name *</label></font></td>
+                    <td><input type="text" name="firstname"  placeholder="First Name" required></td>
+                </tr>
+                <tr>
+                    <td><font size=4><label>Last Name</label></font></td>
+                    <td><input type="text" name="lastname" placeholder="Last Name" required></td>
+                </tr>
+                <tr>
+                    <td><font size=4><label>Contact Number *</label></font></td>
+                    <td><input type="text" name="contactnum" placeholder="Number" required></td>
+                </tr>
+                <tr>
+                    <td><font size=4><label> Email *</label></font></td>
+                    <td><input type="text" name="email" placeholder="Email ID" required></td>
+                </tr>
+                <tr>
+                    <td><font size=4></font><label>Position *</label></font></td>
+                    <td><select name="position" required>
+                        <option>Sales Executive</option>
+                        <option>Customer Suppport</option>
+                        <option>Manager</option>
+                        <option>Florist</option>
+                        <option>HR Executive</option>
+                    </select>  </td>
+                </tr>
+                <tr>
+                    <td><font size=4></font><label> Upload CV *</label></font></td>
+                    <td><input type="file" required></td>
+                </tr>
+            </table>
+            <button type="submit" onclick="javascript:alert('Apllied Successfully')" style="background-color:  indianred; font-size: large;">SUBMIT</button>
+        </form>
+        </center>
+
+        <hr size="10" color="dark">+
+
+</body>
+</html>
