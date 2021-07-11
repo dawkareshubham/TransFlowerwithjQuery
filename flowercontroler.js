@@ -60,7 +60,7 @@ exports.sendAdmin = function(req, res){
 //Password Validation:
 exports.passValidation = function(req,res){
     var claim=req.body;
-    if(claim.username == "shub" && claim.password == "1234")
+    if(claim.username == "user" && claim.password == "1234")
     {
         res.sendFile(__dirname+"/public/order.html");
     }
@@ -99,8 +99,9 @@ exports.pageinsert = function (req, res){
 exports.datafromweb = function (req, res){
     var ins_flower = req.body;
     console.log(ins_flower);
-    
 }
+
+
 exports.insert = function(req, res){
 
     var new_flower = new FlowerObj(req.body);
@@ -118,7 +119,15 @@ exports.insert = function(req, res){
     }
 }
 
-
+exports.removeFlower= function(req,res){
+    console.log(req.body);
+    let flowerName= req.body.Name;
+    FlowerObj.delFlower(flowerName, function (err, flower) {
+        if (err)
+            res.send(err);
+        res.json({ message : "Flower deleted successfully"});
+    });
+}
 
 
 exports.getBy = function (req, res) {
@@ -137,6 +146,15 @@ exports.update = function (req, res) {
         res.json(flower);
     });
 };
+
+
+exports.updateFlower= function(req,res){
+    FlowerObj.updateOneFlower( new FlowerObj(req.body) , function (err, flower) {
+        if (err)
+            res.send(err);
+        res.json(flower);
+    });
+}
 
 exports.remove = function (req, res) {
     FlowerObj.delOneData(req.params.id, function (err, flower) {

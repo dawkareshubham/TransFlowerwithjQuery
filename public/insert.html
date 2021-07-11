@@ -60,27 +60,27 @@
         <table>
             <tr>
                 <td><label for="fid">ID</label></td>
-                <td><input type="text" id="fid" name="fid"></td>
+                <td><input type="text" id="delfid" name="fid"></td>
             </tr>
             <tr>
                 <td><label for="name">Flower name</label></td>
-                <td><input type="text" id="name" name="flowname"></td>
+                <td><input type="text" id="delname" name="flowname"></td>
             </tr>
             <tr>
                 <td><label for="discription">Description</label></td>
-                <td><input type="text" name="disc" id="discription"></td>
+                <td><input type="text" name="disc" id="deldiscription"></td>
             </tr>
             <tr>
                 <td><label for="price">Unit price</label></td>
-                <td><input type="number" id = "price" name="price"></td>
+                <td><input type="number" id = "delprice" name="price"></td>
             </tr>
             <tr>
                 <td><label for="quantity">Quantity</label></td>
-                <td><input type="number" id="quantity" name="quantity"></td>
+                <td><input type="number" id="delquantity" name="quantity"></td>
             </tr>
             <tr>
                 <td><label for="image">Image url</label></td>
-                <td><input type="text" id="image" name="image"></td>
+                <td><input type="text" id="delimage" name="image"></td>
             </tr>
     </table>
     </form>
@@ -92,7 +92,7 @@
         <table>
             <tr>
                 <td><label for="name">Name</label></td>
-                <td><input type="text" id="name" name="delName"></td>
+                <td><input type="text" id="delName" name="delName"></td>
             </tr>
     </table>
     </form>
@@ -126,8 +126,49 @@
           
         }
 
+        var delUrl = 'http://localhost:9000/flowers/delete';
+        function delflower()
+        {
+            let flowerName = $('#delName').val();
+            // console.log(flowerName);
+            
+            let data={
+                'Name':flowerName
+            }
+
+            $.post(delUrl,data,()=>{
+                console.log(data);
+            })
+
+
+        }
         
-         
+        var upUrl = 'http://localhost:9000/flowers/update';
+         function updateflower()
+         {
+            
+
+
+            let flowername = $('#delname').val();
+            let description = $('#deldiscription').val();
+            let quantity = $('#delquantity').val();
+            let unitprice = $('#delprice').val();
+            let image = $('#delimage').val();
+
+            let flower = {
+                id:$('#delfid').val(),
+                 flowername : $('#delname').val(),
+                 description : $('#deldiscription').val(),
+                 quantity : $('#delquantity').val(),
+                 unitprice : $('#delprice').val(),
+                 image : $('#delimage').val()
+            }
+            console.log(flower);
+
+            $.post(upUrl, flower, ()=>{
+                alert("data Updated")
+            })
+         }
    
         </script>
 </body>

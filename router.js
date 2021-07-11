@@ -8,12 +8,20 @@ module.exports = function(app)
     //mapping code for different HTTP Requests
     app.route("/getflowers")
         .get(flowercontroller.sendCatalogue)
-        
+    
+    app.route("/flowers/delete")
+        .post(flowercontroller.removeFlower)
+    
+    app.route("/flowers/update")
+        .post(flowercontroller.updateFlower)
+
     app.route("/flowers/insert")
         .get(flowercontroller.pageinsert)
         .post(flowercontroller.insert)
-    
 
+
+    //CRUD for Testing in POSTMAN tool
+    
     app.route("/flowers")
         .get(flowercontroller.getAll)
         .post(flowercontroller.insert);
